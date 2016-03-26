@@ -2,7 +2,7 @@
 Various docker files (Dockerfile) to be used for development.
 
 Folder:
-  nodemonDocker    --> Dockerfile for installing nodejs (latest) and nodemon.
+  nodemonDocker --> Dockerfile for installing nodejs (latest) and nodemon.
 
 To create image:
   docker build -t "simple_docker:nodedocker" .
