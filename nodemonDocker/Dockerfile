@@ -14,12 +14,14 @@ RUN chown root:root /usr/local/bin/nodeinstall
 RUN /usr/local/bin/nodeinstall lts || true
 # Install file system watcher to auto-reload node during development 
 RUN /usr/local/bin/npm install -g nodemon
-# Expose default app port
-EXPOSE 8081
+# Install node-inspector
+RUN /usr/local/bin/npm install -g node-inspector
+# Expose debug and default app ports
+EXPOSE 5858 8081
 # Create application folder
 RUN mkdir /opt/app
 # Copy application (for now; later will go from git)
 #ADD index.js /opt/app/index.js
 WORKDIR /opt/app
 # Define default command. 
-CMD ["/usr/local/bin/nodemon", "/opt/app/index.js"]
+CMD ["/usr/local/bin/nodemon", "--debug=5858 /opt/app/index.js"]
